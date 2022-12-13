@@ -1,0 +1,21 @@
+.idea/
+out/
+target/
+*.oi
+*.jar
+*.iml
+build/
+bin/
+java/build/
+log/
+src/main/java/META-INF
+
+error_hotspot.xml
+hs_err_pid*
+
+*.class
+
+# Eclipse
+.classpath
+.project
+.settings/
