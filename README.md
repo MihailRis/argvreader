@@ -31,6 +31,8 @@ public static void main(String[] args) {
 
 --help output example:
 ```
+SomeAnimationEngine (c) MihailRis 1970
+Author: https://github.com/MihailRis
 Usage:
   [command]                                                    [description]
   $executable source-file                                      : preview film
