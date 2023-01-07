@@ -6,6 +6,7 @@ import java.util.*;
 public class ArgvReader {
     private final ArgvParser parser;
     private final Map<String, ArgvKeyword> keywordsMap;
+    private final List<String> headlines = new ArrayList<>();
     private final Set<ArgvKeyword> keywords = new HashSet<>();
     private final List<ArgvUsage> usage = new ArrayList<>();
     private final List<ArgvUsage> examples = new ArrayList<>();
@@ -18,6 +19,10 @@ public class ArgvReader {
         keywordsMap = new HashMap<>();
         createHelp();
         out = System.out;
+    }
+
+    public void addHelpHeadLine(String line) {
+        headlines.add(line);
     }
 
     public void addUsage(String usage, String description) {
@@ -61,6 +66,9 @@ public class ArgvReader {
      */
     private void createHelp() {
         add("help", "show help", (keyword, parser1) -> {
+            for (String headline : headlines) {
+                out.println(headline);
+            }
             out.println("Usage:");
             printSamplesSection(usage, helpCommandWidth);
 
