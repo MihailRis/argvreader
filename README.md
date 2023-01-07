@@ -3,6 +3,8 @@ Example:
 public static void main(String[] args) {
     try {
         ArgvReader reader = new ArgvReader(args);
+        reader.addHelpHeadLine("SomeAnimationEngine (c) MihailRis 1970")
+        reader.addHelpHeadLine("Author: https://github.com/MihailRis")
         reader.addUsage("source-file", "preview film");
         reader.addUsage("source-file --render output-file", "render film to file");
         reader.addUsage("source-file --render output-file --speed 1.5", "render film to file with speed x1.5");
