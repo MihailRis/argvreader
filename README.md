@@ -14,11 +14,11 @@ public static void main(String[] args) {
         reader.add("speed", "set time multiplier", (keyword, parser) ->
             System.out.println("Speed set to "+parser.readFloat("speed")), "s");
 
-        if (controller.isNextHelp()) {
-            controller.printHelp();
+        if (reader.isNextHelp()) {
+            reader.printHelp();
             return;
         }
-        String film = controller.nextWord("film");
+        String film = reader.nextWord("film");
         System.out.println("film: " + film);
         reader.execute();
     } catch (ArgvParsingException e) {
