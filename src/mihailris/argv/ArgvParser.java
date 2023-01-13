@@ -27,6 +27,8 @@ public class ArgvParser {
             for (int i = 1; i < arg.length(); i++) {
                 keywords.add(String.valueOf(arg.charAt(i)));
             }
+        } else {
+            pointer--;
         }
     }
 
