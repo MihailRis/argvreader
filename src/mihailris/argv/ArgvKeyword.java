@@ -30,6 +30,6 @@ public class ArgvKeyword {
     }
 
     public interface KeywordConsumer {
-        void perform(ArgvKeyword keyword, ArgvParser parser);
+        void perform(ArgvKeyword keyword, ArgvParser parser) throws Exception;
     }
 }

@@ -143,7 +143,11 @@ public class ArgvReader {
                 throw new ArgvParsingException("unknown keyword '"+alias+"'");
             }
             ArgvKeyword.KeywordConsumer consumer = keyword.getConsumer();
-            consumer.perform(keyword, parser);
+            try {
+                consumer.perform(keyword, parser);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             if (!parser.hasNextKeyword() && parser.hasNext()) {
                 parser.next();
             }
@@ -154,14 +158,15 @@ public class ArgvReader {
         if (!parser.hasNextKeyword() && parser.hasNext() && parser.peekNext().startsWith("-")) {
             parser.next();
         }
-        if (parser.hasNextKeyword() && keywordsMap.get(parser.peekKeyword()) == keywordsMap.get("help")){
-            return true;
-        }
-        return false;
+        return parser.hasNextKeyword() && keywordsMap.get(parser.peekKeyword()) == keywordsMap.get("help");
     }
 
     public void printHelp() {
         ArgvKeyword keyword = keywordsMap.get("help");
-        keyword.getConsumer().perform(keyword, parser);
+        try {
+            keyword.getConsumer().perform(keyword, parser);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
